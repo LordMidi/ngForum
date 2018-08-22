@@ -1,5 +1,9 @@
 # NgForum
 
+An experiment to pratice some Angular & Material. The idea was a kind of forum style application.
+It has topics with its belonging posts. It's using the browser local storage - so no 
+multiuser support but also no backend database needed - yehaa :-D
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.
 
 ## Development server

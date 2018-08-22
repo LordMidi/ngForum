@@ -1,13 +1,2 @@
-<create-topic></create-topic>
-
-
-<button mat-button [matMenuTriggerFor]="menu">Menu</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
-
-<topics [topics]="topics"></topics>
-
-<button mat-fab color="primary">+</button>
-
+<router-outlet></router-outlet>
+<button routerLink="/new-topic" class="new-topic" mat-fab color="primary">+</button>
