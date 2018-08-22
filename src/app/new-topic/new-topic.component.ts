@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { TopicsService } from '../topics.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Post } from '../post';
 
 /**
@@ -25,7 +26,7 @@ export class NewTopicComponent {
   /**
    * @param topicsService {TopicsService}
    */
-  constructor(private topicsService: TopicsService) { }
+  constructor(private topicsService: TopicsService, private router: Router) { }
   
   /**
    * Create new topic.
@@ -33,13 +34,17 @@ export class NewTopicComponent {
    */
   newTopic(topic: string, postText: string): void {
     if (this.topicControl.valid && this.postControl.valid) {
-      this.topicsService.addTopic(topic, new Post(postText));
+      let topicId = this.topicsService.addTopic(topic, new Post(postText));
 
+      this.router.navigate([`/topic/${topicId}`]);
+
+      /*
       // reset inputs
       this.topicField.nativeElement.value = '';
       this.topicControl.reset();
       this.postField.nativeElement.value = '';
       this.topicControl.reset();
+      */
 
     }
   }

@@ -37,10 +37,13 @@ export class TopicsService {
    * Create a new topic.
    * @param text Title of the topic.
    * @param firstPost first post to start the topic with
+   * @return id of the created topic
    */
-  addTopic(text: string, firstPost: Post): void {
-    this.topics.push(new Topic(text, [firstPost]));
+  addTopic(text: string, firstPost: Post): string {
+    let topic = new Topic(text, [firstPost]);
+    this.topics.push(topic);
     this.topics = this.topics; // https://github.com/PillowPillow/ng2-webstorage#known-issues
+    return topic.id;
   }
 
   /**

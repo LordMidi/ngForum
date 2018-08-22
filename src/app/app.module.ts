@@ -16,6 +16,7 @@ import { TopicComponent } from './topic/topic.component';
 const appRoutes: Routes = [
   { path: 'topic/:id', component: TopicComponent },
   { path: 'new-topic', component: NewTopicComponent },
+  { path: '404', component: PageNotFoundComponent },
   { path: '', component: TopicsComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
