@@ -17,12 +17,4 @@ export class Topic {
     }
   };
 
-  /**
-   * Adds a post to the topic.
-   * @param post post to add
-   */
-  addPost(post: Post):void {
-    this.posts.push(post);
-  }
-
 }

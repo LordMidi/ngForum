@@ -1,7 +1,9 @@
-<mat-list *ngIf="topic">
+<mat-list>
   <h2>{{topic.text}}</h2>
   <mat-card *ngFor="let post of topic.posts; let last = last;">
       <p mat-line>{{post.text}}</p>
       <p mat-line>{{post.date | date : 'medium'}}</p>
   </mat-card>
 </mat-list>
+answer
+<new-post [topicId]="topic.id"></new-post>

@@ -9,7 +9,7 @@ import { MaterialModule } from './material/material.module';
 import { AppComponent } from './app.component';
 import { TopicsComponent } from './topics/topics.component';
 import { NewTopicComponent } from './new-topic/new-topic.component';
-import { CreatePostComponent } from './create-post/create-post.component';
+import { NewPostComponent } from './new-post/new-post.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TopicComponent } from './topic/topic.component';
 import { ForumHeaderComponent } from './forum-header/forum-header.component';
@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     AppComponent,
     TopicsComponent,
     NewTopicComponent,
-    CreatePostComponent,
+    NewPostComponent,
     PageNotFoundComponent,
     TopicComponent,
     ForumHeaderComponent

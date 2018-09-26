@@ -3,12 +3,10 @@
     #postText
     required
     placeholder="post"
-    [formControl]="topicControl"
     matInput
-    (keyup.enter)="createPost(postText.value)"
   ></textarea>
 </mat-form-field>
 <button
   mat-raised-button
-  (click)="createPost(postText.value)"
+  (click)="newPost(postText.value)"
 >create new post</button>

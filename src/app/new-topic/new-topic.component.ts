@@ -38,14 +38,6 @@ export class NewTopicComponent {
 
       this.router.navigate([`/topic/${topicId}`]);
 
-      /*
-      // reset inputs
-      this.topicField.nativeElement.value = '';
-      this.topicControl.reset();
-      this.postField.nativeElement.value = '';
-      this.topicControl.reset();
-      */
-
     }
   }
 

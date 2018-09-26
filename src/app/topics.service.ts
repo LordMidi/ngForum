@@ -42,18 +42,38 @@ export class TopicsService {
   addTopic(text: string, firstPost: Post): string {
     let topic = new Topic(text, [firstPost]);
     this.topics.push(topic);
-    this.topics = this.topics; // https://github.com/PillowPillow/ng2-webstorage#known-issues
+    this.serializeTopics();
     return topic.id;
   }
 
   /**
    * Get a specific topic.
-   * @param id identifiert of the topic
+   * @param id identifier of the topic
    */
   getTopic(id: string): Observable<Topic> {
     return this
       .getTopics()
       .pipe(map(topics => topics.filter(topic => topic.id === id)[0]));
+  }
+
+  /**
+   * Add a post to a topic.
+   * @param id identifier of the topic
+   * @param post post to add
+   */
+  addPostToTopic(id: string, post: Post) {
+    this.getTopic(id).subscribe((topic) => {
+      topic.posts.push(post);
+    });
+    this.serializeTopics();
+  }
+
+  /**
+   * Needed for storage syncronization
+   * https://github.com/PillowPillow/ng2-webstorage#known-issues
+   */
+  private serializeTopics() {
+    this.topics = this.topics;
   }
 
 }
