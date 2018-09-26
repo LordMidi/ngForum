@@ -12,6 +12,7 @@ import { NewTopicComponent } from './new-topic/new-topic.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TopicComponent } from './topic/topic.component';
+import { ForumHeaderComponent } from './forum-header/forum-header.component';
 
 const appRoutes: Routes = [
   { path: 'topic/:id', component: TopicComponent },
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     NewTopicComponent,
     CreatePostComponent,
     PageNotFoundComponent,
-    TopicComponent
+    TopicComponent,
+    ForumHeaderComponent
   ],
   imports: [
     BrowserModule,

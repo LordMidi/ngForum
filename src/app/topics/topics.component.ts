@@ -21,7 +21,6 @@ export class TopicsComponent implements OnInit {
     this.topicsService.getTopics().subscribe((x: Topic[]): void => {
 
       // sort topics - newest first
-      console.log(x);
       this.topics = x.sort(
         (a:Topic, b:Topic) => a.posts[0].date.toString() < b.posts[0].date.toString() ? 1 : -1
       );
