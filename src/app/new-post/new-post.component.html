@@ -1,12 +1,8 @@
-<mat-form-field class="container">
+<div class="container">
   <textarea
     #postText
     required
     placeholder="post"
-    matInput
   ></textarea>
-</mat-form-field>
-<button
-  mat-raised-button
-  (click)="newPost(postText.value)"
->create new post</button>
+</div>
+<button (click)="newPost(postText.value)">create new post</button>

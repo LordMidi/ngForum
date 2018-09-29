@@ -1,8 +1,12 @@
-<mat-list>
+<div>
     <h2>topics</h2>
-    <mat-card *ngFor="let topic of topics; let last = last;" routerLink="/topic/{{topic.id}}">
-        <p mat-line>{{topic.text}}</p>
-        <p mat-line>{{topic.posts[0].date | date : 'medium'}}</p>
-    </mat-card>
-</mat-list>
-<button routerLink="/new-topic" class="new-topic" mat-fab color="primary">+</button>
+    <ul class="list-group">
+        <li class="list-group-item"  *ngFor="let topic of topics; let last = last;" routerLink="/topic/{{topic.id}}">
+            <span class="mat-caption">
+                {{topic.posts[topic.posts.length -1].date | date : 'medium'}}
+            </span>
+            <p mat-line>{{topic.text}}</p>                    
+        </li>
+    </ul>
+</div>
+<button routerLink="/new-topic" class="new-topic">+</button>

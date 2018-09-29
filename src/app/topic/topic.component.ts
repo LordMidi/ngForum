@@ -21,7 +21,7 @@ export class TopicComponent implements OnInit {
   ngOnInit() {
     let topicId = this.route.snapshot.paramMap.get('id');
     this.topicsService.getTopic(topicId).subscribe(topic => this.topic = topic);
-    
+
     // invalid topic id provided - no topic found
     if (!this.topic) {
       this.router.navigate(['/404']);

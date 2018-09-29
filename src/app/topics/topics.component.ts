@@ -20,9 +20,11 @@ export class TopicsComponent implements OnInit {
   ngOnInit() {
     this.topicsService.getTopics().subscribe((x: Topic[]): void => {
 
-      // sort topics - newest first
+      // sort topics - last post first
       this.topics = x.sort(
-        (a:Topic, b:Topic) => a.posts[0].date.toString() < b.posts[0].date.toString() ? 1 : -1
+        (a: Topic, b: Topic) =>
+          a.posts[a.posts.length - 1].date.toString() <
+            b.posts[b.posts.length - 1].date.toString() ? 1 : -1
       );
 
     });

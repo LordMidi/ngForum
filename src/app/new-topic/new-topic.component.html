@@ -1,27 +1,23 @@
-<mat-form-field class="container">
+<div>
   <input
     #topic
     required
     placeholder="topic"
     [formControl]="topicControl"
-    matInput
   >
-  <mat-error *ngIf="topicControl.invalid">{{getTopicErrorMessage()}}</mat-error>
-</mat-form-field>
-
-<mat-form-field class="container">
+  <span *ngIf="topicControl.invalid">{{getTopicErrorMessage()}}</span>
+</div>
+<div>
   <textarea
     #post
     required
     placeholder="post"
     [formControl]="postControl"
-    matInput
   ></textarea>
-  <mat-error *ngIf="postControl.invalid">{{getPostErrorMessage()}}</mat-error>
-</mat-form-field>
+  <span *ngIf="postControl.invalid">{{getPostErrorMessage()}}</span>
+</div>
 
 <button
-  mat-raised-button
   (click)="newTopic(topic.value, post.value)"
   [disabled]="!newForm.valid"
 >create new topic</button>

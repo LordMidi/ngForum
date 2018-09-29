@@ -1,6 +1,6 @@
 # NgForum
 
-An experiment to pratice some Angular & Material. The idea was a kind of forum style application.
+An experiment to pratice some Angular & Material (removed). The idea was a kind of forum style application.
 It has topics with its belonging posts. It's using the browser local storage - so no 
 multiuser support but also no backend database needed - yehaa :-D
 
