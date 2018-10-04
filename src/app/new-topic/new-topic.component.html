@@ -1,23 +1,13 @@
-<div>
-  <input
-    #topic
-    required
-    placeholder="topic"
-    [formControl]="topicControl"
-  >
-  <span *ngIf="topicControl.invalid">{{getTopicErrorMessage()}}</span>
+<div class="jumbotron">
+  <h3>new topic</h3>
+  <hr class="my-4">
+  <div class="form-group">
+    <label for="topic">title <span class="small text-info">min. {{topicMinLength}} chars</span></label>
+    <input #topic required id="topic" class="form-control" [ngClass]="{'is-valid': topicControl.valid}" [formControl]="topicControl">
+  </div>
+  <div class="form-group">
+    <label for="topic">text <span class="small text-info">min. {{postMinLength}} chars</span></label>
+    <textarea #post required id="post" name="post" class="form-control" rows="5" [formControl]="postControl"></textarea>
+  </div>
+  <button class="btn btn-primary" (click)="newTopic(topic.value, post.value)" [disabled]="!newForm.valid">new topic</button>
 </div>
-<div>
-  <textarea
-    #post
-    required
-    placeholder="post"
-    [formControl]="postControl"
-  ></textarea>
-  <span *ngIf="postControl.invalid">{{getPostErrorMessage()}}</span>
-</div>
-
-<button
-  (click)="newTopic(topic.value, post.value)"
-  [disabled]="!newForm.valid"
->create new topic</button>

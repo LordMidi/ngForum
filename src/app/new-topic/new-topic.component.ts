@@ -16,12 +16,15 @@ export class NewTopicComponent {
   
   @ViewChild('topic') topicField;
   @ViewChild('post') postField;
-  topicControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
-  postControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(10)]);
+  topicMinLength: number = 5;
+  postMinLength: number = 10;
+  topicControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(this.topicMinLength)]);
+  postControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(this.postMinLength)]);
   newForm: FormGroup = new FormGroup({
     topic: this.topicControl,
     post: this.postControl
   });
+  isVisible = false;
 
   /**
    * @param topicsService {TopicsService}
@@ -39,36 +42,6 @@ export class NewTopicComponent {
       this.router.navigate([`/topic/${topicId}`]);
 
     }
-  }
-
-  /**
-   * Get matching error message for topic input.
-   * @return {string} the error message to display
-   */
-  getTopicErrorMessage(): string {
-    let errorMessage: string = '';
-    if (this.topicControl.hasError('required')) {
-      errorMessage = 'empty!?';
-    }
-    if (this.topicControl.hasError('minlength')) {
-      errorMessage = 'longer!';
-    }
-    return errorMessage;
-  }
-
-  /**
-   * Get matching error message for post textarea.
-   * @return {string} the error message to display
-   */
-  getPostErrorMessage(): string {
-    let errorMessage: string = '';
-    if (this.postControl.hasError('required')) {
-      errorMessage = 'empty!?';
-    }
-    if (this.postControl.hasError('minlength')) {
-      errorMessage = 'longer!';
-    }
-    return errorMessage;
   }
 
 }
