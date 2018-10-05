@@ -9,7 +9,9 @@ import { Topic } from '../topic';
 })
 export class TopicsComponent implements OnInit {
 
-  public topics: Topic[] = [];
+  topics: Topic[] = [];
+  searchQuery: string = '';
+  isNewTopicVisible: boolean = false;
 
   /**
    * The constructor.
@@ -18,16 +20,17 @@ export class TopicsComponent implements OnInit {
   constructor(private topicsService: TopicsService) { }
 
   ngOnInit() {
-    this.topicsService.getTopics().subscribe((x: Topic[]): void => {
-
-      // sort topics - last post first
-      this.topics = x.sort(
-        (a: Topic, b: Topic) =>
-          a.posts[a.posts.length - 1].date.toString() <
-            b.posts[b.posts.length - 1].date.toString() ? 1 : -1
-      );
-
+    this.topicsService.getTopics().subscribe((topic: Topic): void => {
+      this.topics.push(topic);
+      this.topics.sort((a: Topic, b: Topic) =>
+        a.posts[a.posts.length - 1].date.toString() <
+          b.posts[b.posts.length - 1].date.toString() ? 1 : -1
+      )
     });
+  }
+
+  toggleNewTopicVisibilty(): void {
+    this.isNewTopicVisible = !this.isNewTopicVisible;
   }
 
 }

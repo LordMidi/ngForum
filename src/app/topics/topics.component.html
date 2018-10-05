@@ -1,12 +1,28 @@
-<div>
-    <h2>topics</h2>
-    <ul class="list-group">
-        <li class="list-group-item"  *ngFor="let topic of topics; let last = last;" routerLink="/topic/{{topic.id}}">
-            <span class="mat-caption">
-                {{topic.posts[topic.posts.length -1].date | date : 'medium'}}
-            </span>
-            <p mat-line>{{topic.text}}</p>                    
-        </li>
-    </ul>
+<div class="row">
+    <div class="col-sm-12 col-md-2 mb-3">
+        <button (click)="toggleNewTopicVisibilty()" class="btn btn-primary btn-block">new topic</button>
+    </div>
+    <div class="col-sm-12 col-md-5 mb-3">
+        <div class="input-group">
+            <input [(ngModel)]="searchQuery" class="form-control">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="search-button" routerLink="/search/{{searchQuery}}">search</button>
+            </div>
+        </div>
+    </div>
 </div>
-<button routerLink="/new-topic" class="new-topic">+</button>
+<new-topic *ngIf="isNewTopicVisible"></new-topic>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let topic of topics" routerLink="/topic/{{topic.id}}">
+        <div class="container" id="{{topic.id}}">
+            <div class="row">
+                <div class="col-sm-12 col-md-8">
+                    {{topic.text}}
+                </div>
+                <div class="col-sm-12 col-md-4 text-md-right small">
+                    {{topic.posts[topic.posts.length -1].date | date : 'medium'}}
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

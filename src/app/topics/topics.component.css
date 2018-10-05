@@ -1,9 +1,3 @@
-mat-card {
-  margin-bottom: 1em;
-}
-
-.new-topic {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
+.list-group {
+  margin-bottom: 2rem;
 }

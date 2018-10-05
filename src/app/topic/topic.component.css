@@ -1,8 +1,23 @@
-span {
-  display: block;
-  text-align: right;
+h1 {
+  width: 100%;
+  margin-bottom: 0;
+  padding: 2rem;
+  background: rgb(201, 201, 201);
+  border-radius: .25rem .25rem 0 0;
+  border: 1px solid #DDD;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
-p {
+ul {
+  margin-bottom: 2rem;
+}
+
+li:first-of-type {
+  border-radius: 0;
+}
+
+.row {
   white-space: pre-wrap;
 }
+

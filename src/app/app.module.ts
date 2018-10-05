@@ -13,10 +13,11 @@ import { NewPostComponent } from './new-post/new-post.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TopicComponent } from './topic/topic.component';
 import { ForumHeaderComponent } from './forum-header/forum-header.component';
+import { SearchComponent } from './search/search.component';
 
 const appRoutes: Routes = [
   { path: 'topic/:id', component: TopicComponent },
-  { path: 'new-topic', component: NewTopicComponent },
+  { path: 'search/:query', component: SearchComponent },
   { path: '404', component: PageNotFoundComponent },
   { path: '', component: TopicsComponent },
   { path: '**', component: PageNotFoundComponent }
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
     NewPostComponent,
     PageNotFoundComponent,
     TopicComponent,
-    ForumHeaderComponent
+    ForumHeaderComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

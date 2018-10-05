@@ -1,11 +1,16 @@
-<div>
-    <h2>{{topic.text}}</h2>
-    <ul class="list-group">
-        <li class="list-group-item" *ngFor="let post of topic.posts; let last = last;">
-            <span class="mat-caption">{{post.date | date : 'medium'}}</span>
-            <p mat-line>{{post.text}}</p>
-        </li>
-    </ul>
-</div>
-answer
+<h1>{{topic.text}}</h1>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let post of topic.posts" id="{{post.id}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-8">
+                    {{post.text}}
+                </div>
+                <div class="col-sm-12 col-md-4 text-md-right small text-secondary">
+                    {{post.date | date : 'medium'}}
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 <new-post [topicId]="topic.id"></new-post>

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { LocalStorage } from 'ngx-webstorage';
 import { Post } from './post';
 import { Topic } from './topic';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,20 +16,20 @@ export class TopicsService {
 
   @LocalStorage('prop') topics: Topic[]; // bind to local storage
 
-  private topicObservable: Observable<Topic[]>;
+  private topicObservable: Observable<Topic>;
 
   /**
    * The constructor.
    */
   constructor() {
     this.topics = this.topics || [];
-    this.topicObservable = of(this.topics);
+    this.topicObservable = from(this.topics);
   }
   
   /**
    * Get all topics.
    */
-  getTopics(): Observable<Topic[]> {
+  getTopics(): Observable<Topic> {
     return this.topicObservable;
   }
 
@@ -53,7 +53,7 @@ export class TopicsService {
   getTopic(id: string): Observable<Topic> {
     return this
       .getTopics()
-      .pipe(map(topics => topics.filter(topic => topic.id === id)[0]));
+      .pipe(filter(topic => topic.id === id));
   }
 
   /**

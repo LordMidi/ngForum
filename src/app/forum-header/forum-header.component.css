@@ -1,14 +1,9 @@
 header {
   width: 100%;
-  margin: -1rem;
   padding: 2rem;
-  background: red;
-}
-
-header, header a {
+  background: rgba(255,0,132,1);
+  border-radius: .25rem;
   color: white;
   font-weight: bold;
   font-size: 2rem;
-  text-decoration: none;
-  text-align: center;
 }
