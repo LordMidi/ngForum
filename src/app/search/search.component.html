@@ -1,3 +1,16 @@
-<p>
-  search works!
-</p>
+<div *ngIf="searchResults.length === 0" class="alert alert-danger p-3">
+    Sorry - no results found for <mark>{{this.query}}</mark>
+</div>
+<ul *ngIf="searchResults.length > 0" class="list-group">
+    <li class="list-group-item" *ngFor="let searchResult of searchResults" routerLink="/topic/{{searchResult.topic.id}}" [queryParams]="{postId: searchResult.post.id}">
+        <div class="row">
+            <div class="col-sm-12 col-md-8">
+              <h3>{{searchResult.topic.text}}</h3>
+              <p innerHTML="{{searchResult.post.text | highlight: this.query}}"></p>
+            </div>
+            <div class="col-sm-12 col-md-4 text-md-right small text-secondary">
+              {{searchResult.post.date | date : 'medium'}}
+            </div>
+        </div>
+    </li>
+</ul>

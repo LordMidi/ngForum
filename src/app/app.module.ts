@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UtilModule } from '../util/util.module';
 
 import { AppComponent } from './app.component';
 import { TopicsComponent } from './topics/topics.component';
@@ -16,7 +17,7 @@ import { ForumHeaderComponent } from './forum-header/forum-header.component';
 import { SearchComponent } from './search/search.component';
 
 const appRoutes: Routes = [
-  { path: 'topic/:id', component: TopicComponent },
+  { path: 'topic/:topicId', component: TopicComponent },
   { path: 'search/:query', component: SearchComponent },
   { path: '404', component: PageNotFoundComponent },
   { path: '', component: TopicsComponent },
@@ -32,16 +33,17 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     TopicComponent,
     ForumHeaderComponent,
-    SearchComponent
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {anchorScrolling: 'enabled'}),
     FormsModule,
     ReactiveFormsModule,
     Ng2Webstorage,
     NgbModule,
+    UtilModule
   ],
   providers: [],
   bootstrap: [AppComponent]

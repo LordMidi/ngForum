@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { TopicsService } from '../topics.service';
 import { Topic } from '../topic';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,13 +14,24 @@ export class TopicComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private topicsService: TopicsService,
-    private router: Router
+    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    let topicId = this.route.snapshot.paramMap.get('id');
-    this.topicsService.getTopic(topicId).subscribe(topic => this.topic = topic);
+    let topicId = this.route.snapshot.paramMap.get('topicId');
+    let postId = this.route.snapshot.queryParams['postId'];
+
+    this.topicsService.getTopic(topicId).subscribe(topic => {
+      this.topic = topic;
+
+      // scroll to post if parameter is provided
+      if (postId) {
+        this.changeDetectorRef.detectChanges(); // fire change detection to get DOM updated
+        document.querySelector('#p' + postId).scrollIntoView();
+      }
+    });
 
     // invalid topic id provided - no topic found
     if (!this.topic) {

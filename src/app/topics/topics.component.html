@@ -14,14 +14,12 @@
 <new-topic *ngIf="isNewTopicVisible"></new-topic>
 <ul class="list-group">
     <li class="list-group-item" *ngFor="let topic of topics" routerLink="/topic/{{topic.id}}">
-        <div class="container" id="{{topic.id}}">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    {{topic.text}}
-                </div>
-                <div class="col-sm-12 col-md-4 text-md-right small">
-                    {{topic.posts[topic.posts.length -1].date | date : 'medium'}}
-                </div>
+        <div class="row" id="t{{topic.id}}">
+            <div class="col-sm-12 col-md-8">
+                {{topic.text}}
+            </div>
+            <div class="col-sm-12 col-md-4 text-md-right small">
+                {{topic.posts[topic.posts.length -1].date | date : 'medium'}}
             </div>
         </div>
     </li>
