@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NewPostComponent } from '../new-post/new-post.component';
 import { TopicComponent } from './topic.component';
 
 describe('TopicComponent', () => {
@@ -8,9 +10,12 @@ describe('TopicComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopicComponent ]
+      declarations: [NewPostComponent, TopicComponent],
+      imports: [RouterTestingModule.withRoutes([
+        { path: '404', redirectTo: '/' },
+      ]), ReactiveFormsModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

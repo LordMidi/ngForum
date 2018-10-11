@@ -1,8 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ViewportScroller } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { TopicsService } from '../topics.service';
 import { Topic } from '../topic';
-import { Observer } from 'rxjs';
 
 @Component({
   selector: 'topics',
